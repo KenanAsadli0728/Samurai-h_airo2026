@@ -1,0 +1,21 @@
+System Overview Diagram — Three-tier architecture (Client → API → Processing)
+
+Detailed Component Layers:
+
+Data Ingestion (data_loader, demo_data)
+Feature Engineering (energy signatures, anomaly indicators, change-points)
+ML Models (K-Means clustering, Isolation Forest, PELT change detection)
+Pipeline Orchestration (pipeline_wrapper)
+API Backend (FastAPI endpoints)
+Frontend Dashboard (React/Next.js views)
+Data Flow Diagram — Shows path from satellite/synthetic data → processing → JSON → frontend visualization
+
+Design Principles — Separation of concerns, modularity, scalability, transparency
+
+Technology Stack — Python, scikit-learn, FastAPI, React, Leaflet, VIIRS data
+
+Error Handling & Resilience strategies
+
+Deployment Models — Development, API server, and production considerations
+
+Future Enhancements — Real-time streaming, predictive modeling, ERP integration
