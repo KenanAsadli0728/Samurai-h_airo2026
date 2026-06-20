@@ -1,76 +1,64 @@
-# Ethical Declaration
+# Günbəzgöz Etik Bəyanatı
 
-## HumanFirewall — Ethical Principles & Privacy Commitment
+## Günbəzgöz — Etik Öhdəliklər
 
 **Team:** samurai_h-2026  
 **Competition:** AIIRO 2026 Hackathon  
-**Date:** February 2026
+**Date:** June 2026
 
 ---
 
-## 1. All Data is Synthetic
+## 1. Mənbə və Səlahiyyət
 
-Every employee name, department assignment, risk score, and behavioral signal shown in this demonstration is **100% synthetically generated** using a deterministic seeded random number generator (`mulberry32`, seed: 2026).
+Günbəzgöz analitikaları yalnız açıq mənbəli NASA/NOAA VIIRS gecə işığı (
+Nighttime Lights) datasından və layihə daxilində yaradılmış sintetik test nümunələrindən istifadə edir.
 
-- No real employee data has been used, collected, stored, or transmitted at any point during development or demonstration.
-- The 60 synthetic employee profiles were algorithmically generated with no resemblance to real individuals intended or implied.
-- The synthetic data is generated client-side in the user's browser and never leaves the device.
+- Real dünyanın enerji istehlakı modelləri ilə bağlı təxminlər **əslində proxy** hesab olunur.
+- Layihədə heç bir şəxsə aid fərdi məxfi məlumatlar, işçi saatları, faktiki hesablar və ya sənaye müəssisələrinin gizli daxili rəqəmləri istifadə edilmir.
+- VIIRS datası yalnız fəzii işıq sərfə göstərir — bu, birbaşa elektrik sərfiyyatı və ya istehsal həcmi deyil.
 
-## 2. Privacy-by-Design
+## 2. Məxfilik və Risk İdarəçiliyi
 
-HumanFirewall implements **privacy-by-design** principles at the architectural level, not as an afterthought:
+Bu sistem aşağıdakı etik prinsiplərə əsaslanır:
 
-| Privacy Principle | Implementation |
-|-------------------|----------------|
-| **Data minimization** | Individual scores are hidden by default; only department aggregates shown |
-| **Access control** | Individual view requires an explicit "admin only" toggle — signals elevated permission needed |
-| **No persistence** | Zero data saved to database, cookie, localStorage, or any storage medium |
-| **No network requests** | Dashboard makes zero API calls; all computation runs locally in the browser |
-| **Anonymization by default** | Aggregated views cannot be used to identify individuals |
+- **Anonimləşdirmə**: Analizlər üzrə çıxarışlar obyekt səviyyəsində deyil, piksel və zona səviyyəsindədir.
+- **Data minimallaşdırma**: Tədqiqat və prototip mərhələsində yalnız nəzarət edilən açıq data istifadə edilir.
+- **Riskin düzgün təqdimatı**: Nəticələr “ehtimal göstəricisi” kimi təqdim edilməlidir, “fakt” və ya “təsdiq edilmiş qanunsuzluq” kimi deyil.
+- **Aydın məna**: Potensial enerji xərcini və anomaliyaları izah edərkən meteoroloji və sezonal amillər nəzərə alınmalıdır.
 
-## 3. This is a Coaching Tool, Not Surveillance
+## 3. Məqsəd və İstifadə Qaydaları
 
-HumanFirewall is explicitly designed as a **coaching and positive-reinforcement platform**:
+Günbəzgözün məqsədi sənaye və regional enerji sərfiyyatlarının gecə işığı datası vasitəsilə ilkin analizini təmin etməkdir.
 
-- The leaderboard ranks departments by **improvement over time**, not absolute scores — rewarding progress, not shaming those who are behind
-- UI micro-copy uses exclusively positive, coaching language (e.g., "Nudging your team toward better habits — not punishing them")
-- No alerts, push notifications, or individual-facing score disclosures are implemented or planned without explicit employee consent and HR oversight
-- Risk scores are intended to trigger *training assignments*, never disciplinary action
+- Sistem **gizli və ya qanunsuz enerji istifadəsinin** sübutunu deyil, **güman olunan anomal qatarları** müəyyənləşdirmək üçün nəzərdə tutulub.
+- Nəticələr enerji səmərəliliyi, avadanlıq nasazlığı, yaxud göstərilməyən istehsal aktivliyi kimi hallar üçün ilkin araşdırma siqnalı olmalıdır.
+- Bu alət yalnız qərar qəbul etmə prosesini dəstəkləyir; hüquqi və əməli yoxlamalar üçün əlavə mənbələr tələb olunur.
 
-## 4. Intended Use in Production
+## 4. Şəffaflıq və Hesabatlılıq
 
-If this prototype were deployed in a real organization, the following safeguards are **strongly recommended**:
+Layihənin etik tələbləri aşağıdakıları əhatə edir:
 
-### Employee Consent & Transparency
-- Inform all employees that simulated phishing campaigns will occur, the purpose (training, not entrapment), and how data is used
-- Publish an internal security awareness policy document accessible to all staff
+- **Açıq mənbə**: Modelin və istifadənin məhdudiyyətləri şərh edilməli və aydın göstərilməlidir.
+- **Sənədləşdirmə**: Hər bir analiz nəticəsi üçün istifadə edilmiş zaman aralığı, verilən data mənbəyi və ilkin hipotezlər qeyd olunmalıdır.
+- **Məsuliyyət**: Analiz nəticələrinin qərara çevrilməsi halında peşəkar enerji auditorları, ətraf mühit müşahidəçiləri və təchizatçı ekspertləri ilə məsləhətləşmə tələb olunur.
 
-### Data Governance
-- Ensure individual risk scores are accessible only to HR and Security roles with a documented, justified business need
-- Implement role-based access control (RBAC) on all individual-level views
-- Apply data retention limits — behavioral scores should not persist beyond a defined period (e.g., 12 months)
+## 5. Uyğunluq və Məsuliyyət
 
-### Legal Compliance
-- Conduct a DPIA (Data Protection Impact Assessment) before deployment in any EU jurisdiction
-- Comply with GDPR Article 22 (automated decision-making) if scores influence employment decisions
-- Comply with CCPA, PDPA, or equivalent applicable data protection law
+Günbəzgöz aşağıdakı əsas prinsipləri qəbul edir:
 
-### Prohibitions
-- The platform must **not** be used as grounds for disciplinary action or termination
-- Individual scores must **not** be shared with direct line managers without HR oversight
-- Phishing simulations must **not** exploit emotionally sensitive topics (health crises, bereavement, financial distress)
+- **Yanlış intepretasiyadan çəkinmə**: VIIRS işıq səviyyəsinin dəyişməsi yalnız elektrik yükü deyil, həm də işıqlandırma dəyişiklikləri, tikinti, hava şəraiti və təmir işləri ilə bağlı ola bilər.
+- **Qanuni məhdudiyyətlər**: Nəticələr dövlətlər və ya şirkətlər haqqında ittiham edici sənəd kimi təqdim edilməməlidir.
+- **Sosial məsuliyyət**: Layihə enerji şəffaflığını və səmərəliliyini təşviq edən, lakin fərdi və təşkilati reputasiyaya zərər verə biləcək nəticələrdən qaçınan yanaşma ilə hazırlanmalıdır.
 
-## 5. Declaration
+## 6. Bəyanat
 
-We, team samurai_h-2026, declare to the best of our knowledge:
+Biz, samurai_h-2026 komandası olaraq, Günbəzgöz layihəsini etik və məsuliyyətli şəkildə hazırladığımızı təsdiqləyirik:
 
-- [x] No real employee names, emails, or identifiers were used
-- [x] No organizational data was scraped, purchased, or obtained from any third party
-- [x] The 60 synthetic employees were generated algorithmically with no resemblance to real individuals intended
-- [x] The phishing simulation is purely demonstrative and does not send real emails
-- [x] The platform makes no network requests and stores no data
-- [x] All design decisions were made with the explicit goal of coaching, not surveillance
+- [x] Heç bir real fərd və ya müəssisə haqqında həssas məlumat istifadə edilməyib.
+- [x] Analizlər yalnız açıq VIIRS gecə işığı datası və layihə daxilində yaradılmış demo datası üzərində qurulub.
+- [x] Nəticələr ehtimal və patern göstəricisi kimi təqdim edilir, təsdiqlənmiş istehlak və ya qanunsuzluq sübutu kimi yox.
+- [x] Bu prototip enerji analitikası üçün nəzərdə tutulub və şəxsi təqib və ya fərdi məsuliyyətə əsaslanan nəticələr yaratmamalıdır.
 
 ---
 
-*This declaration was written in good faith by the samurai_h-2026 team for the AIIRO 2026 hackathon. We are committed to responsible AI development and human-centered security design.*
+*Bu deklarasiya Günbəzgöz layihəsinin etik çərçivəsini təmin etmək üçün hazırlanmışdır.*
