@@ -1,0 +1,51 @@
+import { AnalyzeRequest, AnalysisResult, ComplianceNoticeRequest, ComplianceNoticeResponse, EnergyReportRequest, EnergyReportResponse } from './types'
+
+const BASE = process.env.NEXT_PUBLIC_BACKEND_URL ?? ''
+
+export async function analyzeRegion(req: AnalyzeRequest): Promise<AnalysisResult> {
+  const res = await fetch(`${BASE}/api/analyze-region`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(req),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error((err as any).detail ?? `Analysis failed (${res.status})`)
+  }
+  return res.json() as Promise<AnalysisResult>
+}
+
+export async function generateComplianceNotice(req: ComplianceNoticeRequest): Promise<ComplianceNoticeResponse> {
+  const res = await fetch(`${BASE}/api/construction/generate-notice`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(req),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error((err as any).detail ?? `Notice generation failed (${res.status})`)
+  }
+  return res.json() as Promise<ComplianceNoticeResponse>
+}
+
+export async function generateEnergyReport(req: EnergyReportRequest): Promise<EnergyReportResponse> {
+  const res = await fetch(`${BASE}/api/energy/generate-report`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(req),
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}))
+    throw new Error((err as any).detail ?? `Report generation failed (${res.status})`)
+  }
+  return res.json() as Promise<EnergyReportResponse>
+}
+
+export async function healthCheck(): Promise<boolean> {
+  try {
+    const res = await fetch(`${BASE}/api/health`)
+    return res.ok
+  } catch {
+    return false
+  }
+}

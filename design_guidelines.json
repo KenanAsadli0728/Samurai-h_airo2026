@@ -1,0 +1,68 @@
+{
+  "theme": "Light Map / Dark Sidebar",
+  "archetype": "Swiss & High-Contrast (Archetype 4) merged with Vibrant Data Accents",
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "IBM Plex Sans",
+    "scale": {
+      "h1": "text-3xl sm:text-4xl tracking-tight font-bold",
+      "h2": "text-2xl sm:text-3xl tracking-tight font-semibold",
+      "h3": "text-xl sm:text-2xl font-semibold",
+      "h4": "text-lg font-medium",
+      "body": "text-base leading-relaxed",
+      "small_label": "text-xs font-semibold tracking-[0.2em] uppercase"
+    },
+    "instructions": "Avoid Inter. Use Outfit for all headers for a modern corporate feel, and IBM Plex Sans for body/data clarity."
+  },
+  "colors": {
+    "map_base_theme": "Bright / Light",
+    "sidebar_bg": "#0B1120",
+    "sidebar_surface": "#1E293B",
+    "sidebar_border": "#334155",
+    "sidebar_text_primary": "#F8FAFC",
+    "sidebar_text_secondary": "#94A3B8",
+    "panel_bg": "#FFFFFF",
+    "panel_border": "#E2E8F0",
+    "panel_text": "#0F172A",
+    "solar_accent": "#F59E0B",
+    "wind_accent": "#06B6D4",
+    "combined_accent": "#10B981",
+    "risk_green": "#10B981",
+    "risk_amber": "#F59E0B",
+    "risk_red": "#EF4444"
+  },
+  "layout_and_spacing": {
+    "grid_system": "Control Room Grid for analytics. Dense, exact, and optimized for data scanning.",
+    "spacing_scale": "Use Tailwind p-4, p-6. Avoid excessive padding in data tables. gap-4 between main widgets.",
+    "structure": "Single page fullscreen. Left Sidebar (flex-none, w-80 or w-96, h-screen, overflow-y-auto). Main Map (flex-1, h-screen, relative positioning)."
+  },
+  "components": {
+    "map": "React-Leaflet filling the main area. Use CartoDB Voyager tiles (bright/vibrant base). Overlay UI elements on the map (like Zoom controls, Draw Zone button) should have pure white backgrounds, subtle shadows, and crisp 1px borders.",
+    "draw_zone_button": "Floating Action Button on the map. Use the active energy color (Solar/Wind/Combined) for its background. Use a vibrant gradient (e.g., bg-gradient-to-r from-amber-500 to-amber-600) and no transparent hover state.",
+    "sidebar": "Strictly dark navy. Metric cards within the sidebar should use #1E293B background, rounded-lg, 1px border (#334155).",
+    "metric_cards": "Include clear Data Points (Suitability %, Feasibility Score, Area ha, Annual GWh) styled with IBM Plex Sans. Use risk colors (Green/Amber/Red) for the Feasibility score.",
+    "layer_controls": "Toggle buttons inside the sidebar. Active states must light up in the vibrant accent colors (Amber/Cyan/Emerald).",
+    "charts_and_data": "If visualizing data, use Shadcn charts or simple progress bars colored by energy type."
+  },
+  "motion_and_interaction": {
+    "hover": "Interactive elements lift (-translate-y-[1px]) or scale (scale-105). Sidebars and panels remain static.",
+    "transitions": "Use 'transition-all duration-200 ease-in-out' for color and transform changes."
+  },
+  "accessibility": {
+    "contrast": "Ensure APCA contrast. White text on vibrant buttons must be checked. Dark navy provides perfect contrast for light text.",
+    "testing": "CRITICAL: All interactive and key informational elements MUST include a 'data-testid' attribute (e.g., data-testid='solar-toggle', data-testid='draw-zone-btn')."
+  },
+  "image_urls": [],
+  "instructions_to_main_agent": [
+    "Use React with pure JavaScript (.js files), not TypeScript (.tsx).",
+    "Do NOT implement dark mode for the entire app. The main map and any overlays MUST be bright. Only the Left Sidebar should be dark navy (#0B1120).",
+    "Install Google Fonts 'Outfit' and 'IBM Plex Sans' and configure them in Tailwind.",
+    "Use 'react-leaflet' and 'leaflet' for the map view. Include Leaflet CSS.",
+    "Map Tile Layer URL: https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+    "Implement an Energy Type Selector (Solar, Wind, Combined) which changes the active accent color across the dashboard.",
+    "Build a 'Draw Analysis Zone' button floating over the map.",
+    "In the Sidebar, implement the Layer Controls (toggles for Satellite, Solar Heatmap, Wind Speed, Land Cover) and the Analytics Panel (metrics).",
+    "Use standard Shadcn UI components but heavily customize them to match the technical, high-contrast, vibrant aesthetic described.",
+    "Remember to attach 'data-testid' attributes to all inputs, buttons, toggles, and metric cards."
+  ]
+}

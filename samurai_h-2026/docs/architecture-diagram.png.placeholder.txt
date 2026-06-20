@@ -1,0 +1,10 @@
+[PLACEHOLDER]
+
+Architecture diagram will be added here before final submission.
+
+Planned diagram will show:
+- React SPA (single-page application) running fully in the browser
+- Client-side synthetic data generation (mulberry32 seeded RNG)
+- Component hierarchy: App.js -> Header, DepartmentHeatmap, PhishingSimulator, EmployeeTable, RiskTrendChart, DepartmentLeaderboard, AutoTrainingPanel
+- Zero network requests — no backend, no database
+- Data flow: generateData.js -> React state -> Components -> UI

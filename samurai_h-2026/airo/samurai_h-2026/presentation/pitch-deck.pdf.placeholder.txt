@@ -1,0 +1,16 @@
+[PLACEHOLDER]
+
+Pitch deck PDF will be added here before final submission.
+
+File: pitch-deck.pdf
+Team: samurai_h-2026
+Competition: AIIRO 2026
+
+Planned slides:
+1. Title: HumanFirewall — Turning People into Your Strongest Security Asset
+2. The Problem: 74% of breaches involve human error
+3. The Solution: HRM platform — coaching, not surveillance
+4. Demo screenshots
+5. Technical architecture (no backend, privacy-by-design)
+6. Ethical principles
+7. Team & roadmap

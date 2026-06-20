@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import fastapi\")",
+      "Bash(pip show *)",
+      "Bash(find . -iname \"*.py\" -newer backend/server.py -not -path \"*/node_modules/*\" -not -path \"*/.venv/*\" -not -path \"*/__pycache__/*\")",
+      "Bash(find . -iname \"*.py\" -not -path \"*/node_modules/*\" -not -path \"*/.venv/*\" -not -path \"*/__pycache__/*\")"
+    ]
+  }
+}
