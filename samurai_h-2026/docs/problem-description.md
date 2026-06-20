@@ -1,61 +1,57 @@
-# The Human Risk Problem in Cybersecurity
+# Günbəzgöz — Problemin Təsviri
 
 ## Background
 
-Despite billions spent on firewalls, endpoint detection, and SIEM platforms, one attack vector consistently bypasses technical controls: **human error**.
+Sənaye enerji sərfi və emissiya analitikası çox vaxt qeyri-şəffaf və gecikmiş məlumatlara əsaslanır. Real zamanlı sənaye enerji istifadəsini ölçmək üçün faydalı alətlərdən çox azdır, xüsusilə geniş coğrafi ərazilərdə və işıqlandırma informasiyasına görə.
 
-The Verizon Data Breach Investigations Report consistently finds that over 74% of breaches involve a human element — phishing clicks, credential sharing, accidental misconfiguration. The threat is not just external adversaries; it is the gap between security policy and actual human behavior inside organizations.
+VIIRS gecə işığı datası (Nighttime Lights) sənaye obyektlərinin enerji istifadəsi və fəaliyyətinin uzaqdan izlənməsi üçün güclü bir proxy təqdim edir. Bu data vasitəsilə biz gecə radiasiya dəyişikliklərini, qeyri-adi işıqlandırma artımlarını və uzunmüddətli dəyişiklikleri izləyə bilərik.
 
-## Current Pain Points
+## Problem
 
-### 1. No Behavioral Visibility
+### 1. Görünməz Enerji İstifadəsi
 
-Most organizations measure *compliance* (did the employee complete the training?) but not *behavior* (does the employee click phishing links?). These are fundamentally different metrics, and conflating them creates dangerous blind spots in the security posture.
+Çox sənaye obyektləri üçün enerji istehlakı yalnız daxili ölçmə cihazları və şirkət hesabatları ilə nəzarət edilir. Bu, regional səviyyədə enerji səmərəliliyini və potensial qanunsuz istifadəni qiymətləndirməyi çətinləşdirir.
 
-### 2. Reactive Training
+### 2. Aşağı Görünürlüklü Anomaliyalar
 
-Security training is typically triggered after a breach or as an annual checkbox exercise. By the time training is assigned post-incident, the risky behavior has already caused damage. Organizations need *proactive* behavioral signals.
+Gecə vaxtı işıq səviyyəsindəki kəskin dəyişikliklər mühüm siqnallar ola bilər:
+- istehsal gücündə ani artım,
+- gecə növbəsində əlavə yanan avadanlıq,
+- qeyri-qanuni və ya çıxışa bildirilən enerji istifadəsi.
 
-### 3. Punitive Culture
+Bu dəyişikliklər hesabatlarda və qonşu obyektlərin təsnifatlarında gizlənə bilər.
 
-Naming and shaming individuals who click a phishing test or use a weak password creates a culture of fear and silence. Employees learn to hide mistakes rather than report them. This is the opposite of the psychological safety needed for a security-aware organization.
+### 3. Mürəkkəb Regional Şərhlər
 
-### 4. Aggregation Gap
+Şəhər və sənaye zonalarında işıq mənbələri çox vaxt qarışır. Bir piksel daxilində bir neçə obyektin işığı birləşə bilər və bu, ənənəvi analizləri yanlış istiqamətə yönəldə bilər.
 
-Security leaders need *departmental* and *behavioral* insights, not just raw individual access logs. Most SIEM/DLP tools produce either overwhelming individual-level data or oversimplified summary statistics that hide the nuance.
+### 4. Məhdud Mənbə və İzolyasiya Olmayan Təhlil
 
-## How HumanFirewall Addresses These Problems
+Çox analiz metodları ya yalnız yerüstü metrikalara, ya da illik hesabatlara əsaslanır. Bu isə real vaxtda enerji israfını və ya qeyri-adi fəaliyyətləri aşkarlamağa imkan vermir.
 
-| Problem | HumanFirewall Solution |
-|---------|------------------------|
-| No behavioral visibility | Automated phishing simulations + 5-signal risk scoring per employee |
-| Reactive training | Weak-signal detection triggers auto-assignment of targeted modules |
-| Punitive culture | Privacy-by-default; leaderboard ranks by *improvement*; no individual notifications |
-| Aggregation gap | Department heatmap with individual drill-down gated behind admin toggle |
+## Günbəzgöz Həlli
 
-## Key Risk Signals Tracked
+Günbəzgöz aşağıdakı əsas sahələrdə dəyər yaradır:
 
-HumanFirewall monitors five behavioral signals per employee:
+- **VIIRS əsaslı enerji profilinin yaranması**: peyk radianceından sənaye işıqlandırması və enerji imzası çıxarılır.
+- **Klasterləmə və seqmentləşdirmə**: oxşar işıq profilləri eyni ansamblara toplanır, fərqli sənaye və istifadə tipləri ayırd edilir.
+- **Anomaliya deteksiyası**: gecə işığında kəskin sıçrayışlar və normadan kənar davranışlar enerji səmərəliliyi və şübhəli fəaliyyət üçün siqnallar verir.
+- **Dəyişiklik nöqtəsinin aşkarlanması**: vaxt ərzində enerji istifadəsində davamlı dəyişikliklər izlənir.
+- **Interaktiv vizuallaşdırma**: frontend xəritə və panel ilə qərar qəbul etmə üçün vizual baxış təmin edilir.
 
-1. **Phishing simulation click rate** — did the employee click the simulated link?
-2. **Two-factor authentication status** — is 2FA enabled on all critical accounts?
-3. **Password hygiene score** — derived from credential strength assessment
-4. **Time since last security training** — recency matters for retention
-5. **Incident reporting rate** — a *positive* signal: are employees speaking up?
+## Məqsəd İstifadəçi Profilləri
 
-## Target Users
+| Rol | İstifadə Məqsədi |
+|------|------------------|
+| Enerji Təchizatçısı | Zona və obyekt üzrə enerji yükü trendini izləmək |
+| Dövlət Nəzarətçisi | Potensial israf və səmərəsizlik zonalarını prioritetləşdirmək |
+| Ekoloji Auditori | Emissiya və enerji istifadə anomaliyalarını aşkarlamaq |
+| Şirkət Analitiki | İstehsal və işıqlandırma dəyişikliklərini vaxtında görmək |
 
-| Role | Primary Use |
-|------|-------------|
-| CISO / Security Manager | Real-time org risk overview, trend monitoring |
-| HR Business Partner | Department-level coaching without individual surveillance |
-| IT Administrator | 2FA adoption and credential hygiene dashboards |
-| Department Manager | Gamified improvement leaderboard, team training progress |
+## Nəticə
 
-## Impact
-
-A platform like HumanFirewall enables organizations to shift from a reactive, compliance-checkbox security culture to a **proactive, coaching-led security culture** — where every employee is treated as a potential last line of defense, not a security liability.
+Günbəzgöz sənaye enerjisinin uzaqdan müşahidəsi üçün regional və məkan-temporal səviyyədə ilkin siqnal dəsti təqdim edir. Bu sistem enerji səmərəliliyini yaxşılaşdırmaq, potensial qanunsuz istifadəni və yaxud gözlənilməz istehlakı aşkarlamaq üçün qərar qəbul edənlərə geniş baxış verir.
 
 ---
 
-*Document prepared for AIIRO 2026 hackathon submission by team samurai_h-2026.*
+*Bu sənəd samurai_h-2026 komandası tərəfindən hazırlanmışdır və AIIRO 2026 hackathon təqdimatı üçün nəzərdə tutulub.*
